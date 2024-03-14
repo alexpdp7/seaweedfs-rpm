@@ -39,6 +39,7 @@ with get_files_from_archive_url(f"https://github.com/seaweedfs/seaweedfs/release
         rpm_build_tempdir = pathlib.Path(rpm_build_tempdir)
         shutil.copyfile(weed, rpm_build_tempdir / "weed")
         pathlib.Path(rpm_build_tempdir / "seaweedfs.spec").write_text(spec.replace("$VERSION$", version))
+        weed_service = pathlib.Path("weed.service").absolute()
 
         build_container()
 
@@ -47,6 +48,7 @@ with get_files_from_archive_url(f"https://github.com/seaweedfs/seaweedfs/release
             '--security-opt', 'label=disable',
             '-v', f'{rpm_build_tempdir}:/build',
             '-v', f'{rpm_build_tempdir}/weed:/root/rpmbuild/SOURCES/weed',
+            '-v', f'{weed_service}:/root/rpmbuild/SOURCES/weed.service',
             '-v', f'{output}:/root/rpmbuild/SRPMS/',
             '-v', f'{output}:/root/rpmbuild/RPMS/',
             '-w', '/build',
