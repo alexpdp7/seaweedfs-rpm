@@ -1,3 +1,11 @@
+# Install
+
+```
+$ sudo dnf copr enable koalillo/seaweedfs rhel-9-x86_64
+$ sudo dnf install seaweedfs
+$ sudo systemctl start weed
+```
+
 # Notes
 
 ## Distro packages
