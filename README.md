@@ -6,6 +6,12 @@ $ sudo dnf install seaweedfs
 $ sudo systemctl start weed
 ```
 
+# Building
+
+Run the `rpm.py` script.
+This generates an RPM that you can use directly.
+This also generates an SRPM that you can upload to COPR to set up a yum repo.
+
 # Notes
 
 ## Distro packages
