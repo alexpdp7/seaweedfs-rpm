@@ -27,7 +27,7 @@ def get_files_from_archive_url(archive_url, files) -> pathlib.Path:
 def build_container():
     subprocess.run(["podman", "build", "--pull=always", "-t", "rpm-builder:latest", "."], check=True)
 
-version = "4.52"
+version = "4.54"
 output = pathlib.Path.cwd() / "output"
 output.mkdir(parents=True)
 
